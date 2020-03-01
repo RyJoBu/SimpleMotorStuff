@@ -1,18 +1,15 @@
 #define pwm  3
 #define in_1  12
 #define in_2  13
-#define setP pinMode
-#define writeD digitalWrite
-#define readD digitalRead
 
 int speed = 0;
 int step = 5;
 
 void setup() {
   Serial.begin(9600);
-  setP(pwm, OUTPUT);
-  setP(in_1, OUTPUT);
-  setP(in_2, OUTPUT);
+  pinMode(pwm, OUTPUT);
+  pinMode(in_1, OUTPUT);
+  pinMode(in_2, OUTPUT);
   clockWise();
 }
 
@@ -32,16 +29,16 @@ void loop() {
 }
 
 void flipDirection() {
-  writeD(in_1, !readD(in_1));
-  writeD(in_2, !readD(in_2));
+  digitalWrite(in_1, !digitalRead(in_1));
+  digitalWrite(in_2, !digitalRead(in_2));
 }
 
 void clockWise() {
-  writeD(in_1, HIGH);
-  writeD(in_2, LOW);
+  digitalWrite(in_1, HIGH);
+  digitalWrite(in_2, LOW);
 }
 
 void counterCW() {
-  writeD(in_1, LOW);
-  writeD(in_2, HIGH);
+  digitalWrite(in_1, LOW);
+  digitalWrite(in_2, HIGH);
 }
